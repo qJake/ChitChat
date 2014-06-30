@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,16 +29,10 @@ namespace ChitChat.Client.View
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            // Get token
-
-            // Call Web API
-            //string authHeader = ar.CreateAuthorizationHeader();
-            HttpClient client = new HttpClient();
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:44300/api/Values");
-            //request.Headers.TryAddWithoutValidation("Authorization", authHeader);
-            HttpResponseMessage response = await client.SendAsync(request);
-            string responseString = await response.Content.ReadAsStringAsync();
-            MessageBox.Show(responseString);
+            var client = new WebClient();
+            client.Credentials = CredentialCache.DefaultCredentials;
+            var response = client.DownloadString("http://localhost:44300/api/values");
+            MessageBox.Show(response);
         }
     }
 }

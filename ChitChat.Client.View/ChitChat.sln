@@ -15,6 +15,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ChitChat.Database", "ChitCh
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0425628F-4DF6-48B3-B7C9-DD72C519A93F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChitChat.Server", "ChitChat.Server\ChitChat.Server.csproj", "{4E21501A-2298-48EA-9677-56358B71EE6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,12 +33,17 @@ Global
 		{68E35AF2-A28D-416D-B666-76984B6E87D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68E35AF2-A28D-416D-B666-76984B6E87D5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68E35AF2-A28D-416D-B666-76984B6E87D5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4E21501A-2298-48EA-9677-56358B71EE6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E21501A-2298-48EA-9677-56358B71EE6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E21501A-2298-48EA-9677-56358B71EE6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E21501A-2298-48EA-9677-56358B71EE6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CA217155-6DDA-41B4-A120-F2A288BAD46E} = {A3A60A03-608F-424D-9BE0-855C61329677}
+		{4E21501A-2298-48EA-9677-56358B71EE6E} = {4AC81883-0C27-4E64-A62E-FA400F040500}
 		{68E35AF2-A28D-416D-B666-76984B6E87D5} = {D268CA06-AA1F-4827-AA8C-7F91F0B90146}
 	EndGlobalSection
 EndGlobal
