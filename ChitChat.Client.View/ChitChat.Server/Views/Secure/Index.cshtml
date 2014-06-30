@@ -6,3 +6,10 @@
 <h2>Index</h2>
 
 <p>Secure page. Your username is: @ViewBag.Username</p>
+<p>You are in the following groups:</p>
+<p>
+    @foreach (var r in ViewBag.Roles)
+    {
+        @r<br />
+    }
+</p>
