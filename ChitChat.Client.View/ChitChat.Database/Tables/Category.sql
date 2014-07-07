@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Category]
+(
+	[ID] INT NOT NULL PRIMARY KEY, 
+    [Name] VARCHAR(255) NOT NULL, 
+    [Color] VARCHAR(7) NOT NULL
+)

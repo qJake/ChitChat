@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[Comment]
+(
+	[ID] INT NOT NULL PRIMARY KEY,
+	[PostID] INT NOT NULL,
+    [UserID] INT NOT NULL, 
+    [Body] TEXT NOT NULL, 
+    [Created] DATETIME NOT NULL DEFAULT GETDATE(), 
+    CONSTRAINT [FK_Comment_User] FOREIGN KEY ([UserID]) REFERENCES [User]([ID]), 
+    CONSTRAINT [FK_Comment_Post] FOREIGN KEY ([PostID]) REFERENCES [Post]([ID])
+)

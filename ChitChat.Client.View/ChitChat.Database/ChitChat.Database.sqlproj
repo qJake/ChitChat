@@ -59,5 +59,16 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Tables" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Post.sql" />
+    <Build Include="Tables\Category.sql" />
+    <Build Include="Tables\Comment.sql" />
+    <Build Include="Tables\PostSecurity.sql" />
+    <Build Include="Tables\User.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="ChitChat.Database.refactorlog" />
   </ItemGroup>
 </Project>
