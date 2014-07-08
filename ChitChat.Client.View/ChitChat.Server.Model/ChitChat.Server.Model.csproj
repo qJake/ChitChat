@@ -79,6 +79,9 @@
     <Compile Include="User.cs">
       <DependentUpon>ChitChat.tt</DependentUpon>
     </Compile>
+    <Compile Include="Categories.cs" />
+    <Compile Include="Posts.cs" />
+    <Compile Include="Users.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ChitChat.Model.edmx">

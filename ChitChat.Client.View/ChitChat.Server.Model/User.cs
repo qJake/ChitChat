@@ -14,19 +14,10 @@ namespace ChitChat.Server.Model
     
     public partial class User
     {
-        public User()
-        {
-            this.Comments = new HashSet<Comment>();
-            this.Posts = new HashSet<Post>();
-        }
-    
         public int ID { get; set; }
         public string Principal { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public byte[] Picture { get; set; }
-    
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<Post> Posts { get; set; }
     }
 }

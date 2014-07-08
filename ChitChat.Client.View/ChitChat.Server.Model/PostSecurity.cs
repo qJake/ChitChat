@@ -17,7 +17,5 @@ namespace ChitChat.Server.Model
         public int ID { get; set; }
         public int PostID { get; set; }
         public string Principal { get; set; }
-    
-        public virtual Post Post { get; set; }
     }
 }

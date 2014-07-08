@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChitChat.Server", "ChitChat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChitChat.Server.Model", "ChitChat.Server.Model\ChitChat.Server.Model.csproj", "{15F00614-1238-424E-9BC2-6FEA5180A312}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChitChat.Server.Model.Tests", "ChitChat.Server.Model.Tests\ChitChat.Server.Model.Tests.csproj", "{75C6D4D4-D30F-4386-939E-FF59A7A9CDA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{15F00614-1238-424E-9BC2-6FEA5180A312}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15F00614-1238-424E-9BC2-6FEA5180A312}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15F00614-1238-424E-9BC2-6FEA5180A312}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75C6D4D4-D30F-4386-939E-FF59A7A9CDA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C6D4D4-D30F-4386-939E-FF59A7A9CDA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C6D4D4-D30F-4386-939E-FF59A7A9CDA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C6D4D4-D30F-4386-939E-FF59A7A9CDA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,5 +58,6 @@ Global
 		{4E21501A-2298-48EA-9677-56358B71EE6E} = {4AC81883-0C27-4E64-A62E-FA400F040500}
 		{15F00614-1238-424E-9BC2-6FEA5180A312} = {4AC81883-0C27-4E64-A62E-FA400F040500}
 		{68E35AF2-A28D-416D-B666-76984B6E87D5} = {D268CA06-AA1F-4827-AA8C-7F91F0B90146}
+		{75C6D4D4-D30F-4386-939E-FF59A7A9CDA9} = {0425628F-4DF6-48B3-B7C9-DD72C519A93F}
 	EndGlobalSection
 EndGlobal

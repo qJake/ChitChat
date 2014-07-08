@@ -142,7 +142,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ChitChat.Server.Model.Database" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="Categories" EntityType="ChitChat.Server.Model.Database.Category" />
           <EntitySet Name="Comments" EntityType="ChitChat.Server.Model.Database.Comment" />
           <EntitySet Name="Posts" EntityType="ChitChat.Server.Model.Database.Post" />
@@ -176,7 +176,6 @@
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Color" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Posts" Relationship="ChitChat.Server.Model.Database.FK_Posts_Category" FromRole="Category" ToRole="Post" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -211,7 +210,6 @@
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="PostID" Type="Int32" Nullable="false" />
           <Property Name="Principal" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Post" Relationship="ChitChat.Server.Model.Database.FK_PostSecurity_Posts" FromRole="PostSecurity" ToRole="Post" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -222,8 +220,6 @@
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Comments" Relationship="ChitChat.Server.Model.Database.FK_Comment_User" FromRole="User" ToRole="Comment" />
-          <NavigationProperty Name="Posts" Relationship="ChitChat.Server.Model.Database.FK_Posts_User" FromRole="User" ToRole="Post" />
         </EntityType>
         <Association Name="FK_Posts_Category">
           <End Type="ChitChat.Server.Model.Database.Category" Role="Category" Multiplicity="1" />

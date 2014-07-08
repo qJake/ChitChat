@@ -60,6 +60,7 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="Population" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Post.sql" />
@@ -67,6 +68,7 @@
     <Build Include="Tables\Comment.sql" />
     <Build Include="Tables\PostSecurity.sql" />
     <Build Include="Tables\User.sql" />
+    <PostDeploy Include="Population\MockData.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ChitChat.Database.refactorlog" />

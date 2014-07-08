@@ -14,15 +14,8 @@ namespace ChitChat.Server.Model
     
     public partial class Category
     {
-        public Category()
-        {
-            this.Posts = new HashSet<Post>();
-        }
-    
         public int ID { get; set; }
         public string Name { get; set; }
         public string Color { get; set; }
-    
-        public virtual ICollection<Post> Posts { get; set; }
     }
 }
