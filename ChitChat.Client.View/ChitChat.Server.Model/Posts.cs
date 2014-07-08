@@ -79,6 +79,7 @@ namespace ChitChat.Server.Model
         {
             using (var context = new Entities())
             {
+                context.Posts.Attach(post);
                 context.Posts.Remove(post);
                 context.SaveChanges();
             }
