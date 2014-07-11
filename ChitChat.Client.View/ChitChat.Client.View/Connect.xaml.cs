@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ChitChat.Client.View.Hubs;
+using Microsoft.AspNet.SignalR.Client;
 
 namespace ChitChat.Client.View
 {
@@ -22,17 +24,32 @@ namespace ChitChat.Client.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IHubProxy PostHub;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            HubManager.Connecting += () =>
+            {
+                MessageBox.Show("Connecting...");
+            };
+            HubManager.Connected += () =>
+            {
+                MessageBox.Show("Connected!");
+            };
+
+            PostHub = HubManager.Get("PostHub");
+
+            PostHub.On("NewPostNotification", () =>
+            {
+                MessageBox.Show("New Post!");
+            });
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var client = new WebClient();
-            client.Credentials = CredentialCache.DefaultCredentials;
-            var response = client.DownloadString("http://localhost:44300/api/values");
-            MessageBox.Show(response);
+            Task.Run(() => HubManager.Connect());
         }
     }
 }

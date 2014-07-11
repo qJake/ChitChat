@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
+using ChitChat.Server.Hubs;
 using ChitChat.Server.Model;
+using Microsoft.AspNet.SignalR;
 
 namespace ChitChat.Server.Controllers
 {
@@ -29,6 +27,14 @@ namespace ChitChat.Server.Controllers
         public IEnumerable<Post> Recent(int count = 10)
         {
             return Posts.GetRecentPosts(count);
+        }
+
+        [HttpGet]
+        [Route("api/posts/create")]
+        public void Post()
+        {
+            var context = GlobalHost.ConnectionManager.GetHubContext<PostHub>();
+            context.Clients.All.NewPostNotification();
         }
     }
 }
