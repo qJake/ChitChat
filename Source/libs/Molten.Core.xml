@@ -1,0 +1,396 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Molten.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Molten.Core.AutoStart">
+            <summary>
+            Allows (de)registration of an application on startup.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.AutoStart.Register(System.String,System.String)">
+            <summary>
+            Registers an application for startup via the Registry.
+            </summary>
+            <param name="appName">The name of the application.</param>
+            <param name="appPath">The path of the application.</param>
+            <returns>True on success, false otherwise.</returns>
+            <remarks>TODO: Don't eat the exceptions, do something useful with them, but still make it easy to use.</remarks>
+        </member>
+        <member name="M:Molten.Core.AutoStart.Unregister(System.String)">
+            <summary>
+            Unregisters an application for startup via the Registry.
+            </summary>
+            <param name="appName">The name of the application.</param>
+            <returns>True on success, false otherwise.</returns>
+            <remarks>TODO: Don't eat the exceptions, do something useful with them, but still make it easy to use.</remarks>
+        </member>
+        <member name="T:Molten.Core.Data.ValidationHelper">
+            <summary>
+            Contains helper methods to assist in data validation with Data Annotations.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Data.ValidationHelper.ValidateDataObject(System.Object)">
+            <summary>
+            Validates an entire data object, and returns a list of strings containing error messages.
+            </summary>
+            <param name="data">The data object to validate.</param>
+            <returns>A List of strings containing error messages, or null if no errors were found.</returns>
+        </member>
+        <member name="M:Molten.Core.Data.ValidationHelper.ValidateProperty(System.Object,System.String)">
+            <summary>
+            Validates a specific property on an object, and returns a list of strings containing error messages.
+            </summary>
+            <param name="data">The data object to validate.</param>
+            <param name="propertyName">The name of the property to validate.</param>
+            <returns>A List of strings containing error messages, or null if no errors were found.</returns>
+        </member>
+        <member name="T:Molten.Core.Storage.StorageInitializationException">
+            <summary>
+            Occurs whenever the system is unable to initialize a storage area.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Storage.StorageInitializationException.#ctor">
+            <summary>
+            Initializes a new instance of the StorageInitializationException class.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Storage.StorageInitializationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the StorageInitializationException class with the specified message.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Storage.StorageInitializationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the StorageInitializationException class with the specified message and inner exception.
+            </summary>
+        </member>
+        <member name="T:Molten.Core.ApplicationInstanceManager">
+            <summary>
+            Creates an InstanceManager that, when disposed from the IDisposable interface, releases the mutex of the application.
+            </summary>
+            <remarks>TODO: Handle edge case and non-standard conditions. This implementation is not perfect.</remarks>
+        </member>
+        <member name="M:Molten.Core.ApplicationInstanceManager.#ctor">
+            <summary>
+            Initializes a new instance of the ApplicationInstanceManager class.
+            </summary>
+            <remarks>TODO: Throw an error if this application doesn't have a GUID in its assembly information.</remarks>
+        </member>
+        <member name="M:Molten.Core.ApplicationInstanceManager.CheckSingleInstance">
+            <summary>
+            Checks the application's GUID for an existing running instance of the application. Returns false if there is an existing instance running, true otherwise. This also creates and locks a mutex for the current process and holds it until <see cref="M:Molten.Core.ApplicationInstanceManager.Dispose"/> is called.
+            </summary>
+            <returns>True if there are no other running instances, false otherwise.</returns>
+        </member>
+        <member name="M:Molten.Core.ApplicationInstanceManager.Dispose">
+            <summary>
+            Disposes of this ApplicationInstanceManager and releases the mutex for this application.
+            </summary>
+        </member>
+        <member name="T:Molten.Core.LimitedQueue`1">
+            <summary>
+            Represents a limited set of first-in, first-out objects.
+            </summary>
+            <typeparam name="T">The type of each object to store.</typeparam>
+        </member>
+        <member name="F:Molten.Core.LimitedQueue`1.limit">
+            <summary>
+            Stores the local limit instance.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.LimitedQueue`1.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the LimitedQueue class.
+            </summary>
+            <param name="limit">The maximum number of items to store.</param>
+        </member>
+        <member name="M:Molten.Core.LimitedQueue`1.Enqueue(`0)">
+            <summary>
+            Adds a new item to the queue. After adding the item, if the count of items is greater than the limit, the first item in the queue is removed.
+            </summary>
+            <param name="item">The item to add.</param>
+        </member>
+        <member name="P:Molten.Core.LimitedQueue`1.Limit">
+            <summary>
+            Sets the limit of this LimitedQueue. If the new limit is greater than the count of items in the queue, the queue will be trimmed.
+            </summary>
+        </member>
+        <member name="T:Molten.Core.Extensions.ObjectExtensions">
+            <summary>
+            Contains extension methods for the Object class.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Extensions.ObjectExtensions.Clone``1(``0)">
+            <summary>
+            Clones the specified object of type <typeparamref name="T" /> using deep memory copy / serialization.
+            </summary>
+            <typeparam name="T">The type of object being copied.</typeparam>
+            <param name="source">The object instance to copy.</param>
+            <returns>The copied object.</returns>
+        </member>
+        <member name="T:Molten.Core.Localization.Localizer">
+            <summary>
+            Provides an easy way to implement localization in an application using an ID-based storage structure.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Localization.Localizer.Initialize(System.String)">
+            <summary>
+            Optional. Initializes localization by reading language files from disk.
+            </summary>
+            <param name="culture">The name of the culture, in "langcode-countrycode" format (e.g. en-US). Defaults to <c>CultureInfo.CurrentCulture.Name</c> if null.</param>
+        </member>
+        <member name="M:Molten.Core.Localization.Localizer.Initialize(System.IO.Stream)">
+            <summary>
+            Optional. Initializes the localizer with the specified stream containing localization information.
+            </summary>
+            <param name="localizationData">A stream of localization data in the format ID=Value (one per line).</param>
+        </member>
+        <member name="M:Molten.Core.Localization.Localizer.Init(System.String)">
+            <summary>
+            Common initializer that accepts string data to initialize the storage table.
+            </summary>
+            <param name="data">The data to parse and populate the storage table with.</param>
+        </member>
+        <member name="M:Molten.Core.Localization.Localizer.Localize(System.String)">
+            <summary>
+            Localizes the specified string ID. If the localizer has not been initialized, it will initialize first.
+            </summary>
+            <param name="id">The ID of the localized string to retrieve.</param>
+            <returns>The localized string, or the <paramref name="id" /> if the string was not found in the file.</returns>
+        </member>
+        <member name="M:Molten.Core.Localization.Localizer.L(System.String)">
+            <summary>
+            Shorthand for the <see cref="M:Molten.Core.Localization.Localizer.Localize(System.String)"/> method. If the localizer has not been initialized, it will initialize first.
+            </summary>
+            <param name="id">The ID of the localized string to retrieve.</param>
+            <returns>The localized string, or the <paramref name="id"/> if the string was not found in the file.</returns>
+        </member>
+        <member name="T:Molten.Core.Storage.XmlStorageManager">
+            <summary>
+            Manages saving and loading of .xml storage files in the user's profile.
+            </summary>
+            <remarks>TODO: Support encryption so that users cannot read/alter storage files manually.</remarks>
+        </member>
+        <member name="F:Molten.Core.Storage.XmlStorageManager.storageLocation">
+            <summary>
+            Specifies the path to the local storage location.
+            </summary>
+        </member>
+        <member name="F:Molten.Core.Storage.XmlStorageManager.isInitialized">
+            <summary>
+            Whether or not the storage manager has been initialized. No save/load operations are permitted without initializing first.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Storage.XmlStorageManager.Initialize">
+            <summary>
+            Initializes the XmlStorageManager which will be the folder used to store information. The storage area will be named according to the executing assembly's name.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Storage.XmlStorageManager.Reset">
+            <summary>
+            Resets the XmlStorageManager to its initial state, before initialization.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Storage.XmlStorageManager.Initialize(System.String)">
+            <summary>
+            Initializes the XmlStorageManager with the specified storage area name, which will be the folder used to store information.
+            </summary>
+            <param name="storageAreaName">The name of the folder to use for storage.</param>
+            <remarks>TODO: Support other arbitrary locations instead of always using %appdata%.</remarks>
+        </member>
+        <member name="M:Molten.Core.Storage.XmlStorageManager.Save(System.String,System.Object)">
+            <summary>
+            Serializes an object and saves its current state to a storage location on the disk.
+            </summary>
+            <param name="name">An arbitrary name for the stored object (used to load it later).</param>
+            <param name="o">The object to serialize and save. The object must be serializable. Non-serializable properties must be marked with the XmlIgnore attribute.</param>
+        </member>
+        <member name="M:Molten.Core.Storage.XmlStorageManager.Load``1(System.String)">
+            <summary>
+            Loads an object's state from storage.
+            </summary>
+            <typeparam name="T">The type of object to load.</typeparam>
+            <param name="name">The arbitrary name of the stored object that was used when saving it.</param>
+            <returns>The loaded object's state from storage, or default(T) if the storage object was not found.</returns>
+        </member>
+        <member name="M:Molten.Core.Storage.XmlStorageManager.Exists(System.String)">
+            <summary>
+            Checks to see if a storage object exists or not.
+            </summary>
+            <param name="name">The arbitrary name of the stored object to check for.</param>
+            <returns>True if the storage object exists, false otherwise.</returns>
+        </member>
+        <member name="M:Molten.Core.Storage.XmlStorageManager.DeleteAll">
+            <summary>
+             Clears the current storage area of all persisted settings and files. This operation cannot be undone.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Storage.XmlStorageManager.Delete(System.String)">
+            <summary>
+            Permanently deletes a storage object. This operation cannot be undone.
+            </summary>
+            <param name="name">The name of the storage object to delete.</param>
+            <remarks>If the storage object does not exist, no error is thrown.</remarks>
+        </member>
+        <member name="M:Molten.Core.Storage.XmlStorageManager.InitializeStorageArea">
+            <summary>
+            Helper function to ensure storage area is read/write and all folders are set up accordingly. After calling
+            this function, it is safe to read and write to the storage folder(s).
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Storage.XmlStorageManager.Deserialize``1(System.String)">
+            <summary>
+            Deserializes the specified XML string into type <typeparamref name="T" />.
+            </summary>
+            <typeparam name="T">The type of object expected when deserializing.</typeparam>
+            <param name="xml">The string of XML data to deseriailze.</param>
+            <returns>An object of type <typeparamref name="T" /> that was deserialized.</returns>
+        </member>
+        <member name="M:Molten.Core.Storage.XmlStorageManager.Serialize(System.Object)">
+            <summary>
+            Serializes and returns the XML representation of the specified object.
+            </summary>
+            <param name="o">The object to serialize.</param>
+            <returns>A string of XML data representing the serialized object.</returns>
+        </member>
+        <member name="T:Molten.Core.Extensions.TimeSpanExtensions">
+            <summary>
+            Contains extension methods for the TimeSpan class.
+            </summary>
+        </member>
+        <member name="F:Molten.Core.Extensions.TimeSpanExtensions.MAX_ABBREVIATION_PARTS">
+            <summary>
+            Specifies the absolute maximum number of parts to include when abbreviating a TimeSpan.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Extensions.TimeSpanExtensions.ToAbbreviatedString(System.TimeSpan)">
+            <summary>
+            Converts this TimeSpan into an abbreviated format.
+            </summary>
+            <returns>An abbreviated string describing this TimeSpan (e.g. 2d 3h 4m 56s).</returns>
+        </member>
+        <member name="M:Molten.Core.Extensions.TimeSpanExtensions.ToAbbreviatedString(System.TimeSpan,System.Int32)">
+            <summary>
+            Converts this TimeSpan into an abbreviated format, specifying the number of parts to use in the output.
+            </summary>
+            <param name="dt">This TimeSpan to convert.</param>
+            <param name="numberOfParts">The number of time components to include in the output.</param>
+            <returns>An abbreviated string describing this TimeSpan (e.g. 2d 3h 4m 56s).</returns>
+            <remarks>TODO: Support months (maybe, this is difficult due to 30/31 days), years, and milliseconds.</remarks>
+        </member>
+        <member name="T:Molten.Core.Deployment.UpdateManager">
+            <summary>
+            Contains methods for managing ClickOnce updates for this application.
+            </summary>
+            <remarks>This was initially pulled from an MSDN example, but has since been altered / improved upon.</remarks>
+        </member>
+        <member name="M:Molten.Core.Deployment.UpdateManager.CheckForUpdates(System.Boolean)">
+            <summary>
+            Checks for updates to the currently running application.
+            </summary>
+            <param name="displayCurrentMessage">Whether or not to display a message indicating that the application is up to date.</param>
+        </member>
+        <member name="M:Molten.Core.Deployment.UpdateManager.RestartApplication">
+            <summary>
+            Curiously, this is how you best restart a WPF ClickOnce application. It also works for WinForms applications, as well.
+            </summary>
+        </member>
+        <member name="T:Molten.Core.Extensions.StringExtensions">
+            <summary>
+            Contains extension methods for the String class.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Extensions.StringExtensions.Append(System.String,System.String)">
+            <summary>
+            Appends the specified string to this instance.
+            </summary>
+            <param name="s">The string to work with.</param>
+            <param name="extra">The string to append.</param>
+        </member>
+        <member name="M:Molten.Core.Extensions.StringExtensions.Prepend(System.String,System.String)">
+            <summary>
+            Prepends the specified string to this instance.
+            </summary>
+            <param name="s">The string to work with.</param>
+            <param name="extra">The string to prepend.</param>
+        </member>
+        <member name="T:Molten.Core.Net.TcpConnection">
+            <summary>
+            Encapsulates a single TCP connection in an easy to use wrapper class.
+            </summary>
+            <remarks>TODO: This needs to support various protocols / termination identifiers to know when to fire the DataReceived event. E.g. HTTP (checking length in header against length of body), line-by-line, byte sequence, etc.</remarks>
+        </member>
+        <member name="F:Molten.Core.Net.TcpConnection.dataThread">
+            <summary>
+            Listener thread for accepting data.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Net.TcpConnection.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the TcpConnection Class with the specified host and port number.
+            </summary>
+            <param name="host">The host to connect to. Can be an IP address or a domain name.</param>
+            <param name="port">The port to communicate on.</param>
+        </member>
+        <member name="M:Molten.Core.Net.TcpConnection.Send(System.String,System.Text.Encoding)">
+            <summary>
+            Sends data through the TCP connection, optionally specifying the encoding to use.
+            </summary>
+            <param name="data">The data to send.</param>
+            <param name="encoding">Optionally, the encoding to use when sending data. If this is not set, it defaults to ASCII.</param>
+        </member>
+        <member name="M:Molten.Core.Net.TcpConnection.Send(System.Byte[])">
+            <summary>
+            Sends bytes through the TCP connection.
+            </summary>
+            <param name="data">The bytes to send.</param>
+        </member>
+        <member name="M:Molten.Core.Net.TcpConnection.MessageListener">
+            <summary>
+            The message listener. This spins to listen for incoming data from the TCP connection.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Net.TcpConnection.Disconnect">
+            <summary>
+            Disconnects the TCP client, cleans up any threads and raises the appropriate events.
+            </summary>
+        </member>
+        <member name="E:Molten.Core.Net.TcpConnection.DataReceived">
+            <summary>
+            Occurs when incoming data arrives through the TCP connection. This event occurs on a separate thread.
+            </summary>
+        </member>
+        <member name="E:Molten.Core.Net.TcpConnection.Connected">
+            <summary>
+            Occurs when the TCP connection is established.
+            </summary>
+        </member>
+        <member name="E:Molten.Core.Net.TcpConnection.Disconnected">
+            <summary>
+            Occurs when the TCP connection is terminated.
+            </summary>
+        </member>
+        <member name="P:Molten.Core.Net.TcpConnection.Host">
+            <summary>
+            Gets the host that this TCP connection is using.
+            </summary>
+        </member>
+        <member name="P:Molten.Core.Net.TcpConnection.Port">
+            <summary>
+            Gets the port number that this TCP connection is using.
+            </summary>
+        </member>
+        <member name="P:Molten.Core.Net.TcpConnection.IsConnected">
+            <summary>
+            Gets whether or not the TCP connection is established.
+            </summary>
+        </member>
+        <member name="P:Molten.Core.Net.TcpConnection.Client">
+            <summary>
+            Gets the underlying TCP client.
+            </summary>
+        </member>
+    </members>
+</doc>

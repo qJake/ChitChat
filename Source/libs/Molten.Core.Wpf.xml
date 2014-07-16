@@ -1,0 +1,576 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Molten.Core.Wpf</name>
+    </assembly>
+    <members>
+        <member name="T:Molten.Core.Wpf.Converters.InverseBooleanConverter">
+            <summary>
+            A type converter for inversing a boolean value.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Wpf.Converters.InverseBooleanConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a boolean value to its inverse.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <param name="targetType">The target type.</param>
+            <param name="parameter">The parameter, or null if no parameter was defined.</param>
+            <param name="culture">Culture info.</param>
+            <returns>The converted value.</returns>
+        </member>
+        <member name="M:Molten.Core.Wpf.Converters.InverseBooleanConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a boolean value to its inverse.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <param name="targetType">The target type.</param>
+            <param name="parameter">The parameter, or null if no parameter was defined.</param>
+            <param name="culture">Culture info.</param>
+            <returns>The converted value.</returns>
+        </member>
+        <member name="T:Molten.Core.Wpf.DragDrop.DragDropManager">
+            <summary>
+            Creates and manages all <see cref="T:Molten.Core.Wpf.DragDrop.DragDropper"/> instances.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Wpf.DragDrop.DragDropManager.#ctor">
+            <summary>
+            Private constructor (this class is a singleton).
+            </summary>
+        </member>
+        <member name="F:Molten.Core.Wpf.DragDrop.DragDropManager.dragDroppers">
+            <summary>
+            Stores all of the DragDropper instances.
+            </summary>
+        </member>
+        <member name="P:Molten.Core.Wpf.DragDrop.DragDropManager.Instances">
+            <summary>
+            Index into this property to retrieve or create DragDropper instances.
+            </summary>
+        </member>
+        <member name="P:Molten.Core.Wpf.DragDrop.DragDropManager.Item(System.String)">
+            <summary>
+            Gets or creates a DragDropper instance.
+            </summary>
+            <param name="name">The unique name of the DragDropper.</param>
+            <returns>A <see cref="T:Molten.Core.Wpf.DragDrop.DragDropper"/> instance.</returns>
+        </member>
+        <member name="T:Molten.Core.Wpf.DragDrop.DragDropper">
+            <summary>
+            Encapsulates a single drag/drop operation between any number of drop sources and any number of drop targets.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Wpf.DragDrop.DragDropper.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the DragDropper class.
+            
+            This class may only be initialized from within this assembly. To use the DragDropper class, refer to the <see cref="T:Molten.Core.Wpf.DragDrop.DragDropManager"/>
+            to create a new instance of this class.
+            </summary>
+            <param name="name">The unique name of this DragDropper (to distinguish multiple drag/drop events).</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.DragDrop.DragDropper.IsInitialized">
+            <summary>
+            Determines whether or not this DragDropper is ready to perform drag/drop actions.
+            </summary>
+            <returns>True if this class is ready to perform drag/drop operations, otherwise false.</returns>
+        </member>
+        <member name="M:Molten.Core.Wpf.DragDrop.DragDropper.AddSource(System.Windows.UIElement)">
+            <summary>
+            Adds a valid source drag target.
+            </summary>
+            <param name="source">The draggable source element.</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.DragDrop.DragDropper.RemoveSource(System.Windows.UIElement)">
+            <summary>
+            Removes a valid source drag target.
+            </summary>
+            <param name="source">The source to remove.</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.DragDrop.DragDropper.AddTarget(System.Windows.UIElement)">
+            <summary>
+            Adds a valid drop target.
+            </summary>
+            <param name="target">The element which can accept any of the specified <see cref="P:Molten.Core.Wpf.DragDrop.DragDropper.Sources"/> during a drop operation.</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.DragDrop.DragDropper.RemoveTarget(System.Windows.UIElement)">
+            <summary>
+            Removes the specified drop target from the list of valid drop targets.
+            </summary>
+            <param name="target">The specified element to remove from the list of drop targets.</param>
+        </member>
+        <member name="P:Molten.Core.Wpf.DragDrop.DragDropper.Name">
+            <summary>
+            Specifies the unique name of this drag/drop operation. This is used during the drag/drop operation to detect the contents of the drop.
+            </summary>
+        </member>
+        <member name="E:Molten.Core.Wpf.DragDrop.DragDropper.Drop">
+            <summary>
+            Occurs when the drop event is fired on a valid target. The parameters are: package, source, target.
+            </summary>
+        </member>
+        <member name="E:Molten.Core.Wpf.DragDrop.DragDropper.DragStart">
+            <summary>
+            Occurs when the drag event starts. The UIElement parameter is the source (to match it with the source in the DragDropper) and the object is the package to include.
+            </summary>
+        </member>
+        <member name="E:Molten.Core.Wpf.DragDrop.DragDropper.CanDrop">
+            <summary>
+            Occurs when trying to drop a source onto a target. The "AllowDrop" property in the DropEventArgs dictates if the drop will occur or be cancelled.
+            </summary>
+        </member>
+        <member name="E:Molten.Core.Wpf.DragDrop.DragDropper.DragEnter">
+            <summary>
+            Occurs if the result of CanDrop is true, when a source is dragged over this target.
+            </summary>
+        </member>
+        <member name="E:Molten.Core.Wpf.DragDrop.DragDropper.DragLeave">
+            <summary>
+            Occurs if the result of CanDrop is true, when a source is dragged away from this target.
+            </summary>
+        </member>
+        <member name="T:Molten.Core.Wpf.DragDrop.DragStartEventArgs">
+            <summary>
+            Stores information related to a DragStart event.
+            </summary>
+        </member>
+        <member name="F:Molten.Core.Wpf.DragDrop.DragStartEventArgs.Package">
+            <summary>
+            Gets or sets the package contents to deliver to the drop area.
+            </summary>
+        </member>
+        <member name="T:Molten.Core.Wpf.DragDrop.DropEventArgs">
+            <summary>
+            Stores information related to a Drop event.
+            </summary>
+        </member>
+        <member name="P:Molten.Core.Wpf.DragDrop.DropEventArgs.AllowDrop">
+            <summary>
+            Gets or sets whether or not this drop action should be allowed.
+            </summary>
+        </member>
+        <member name="P:Molten.Core.Wpf.DragDrop.DropEventArgs.Source">
+            <summary>
+            Gets or sets the source <seealso cref="T:System.Windows.UIElement"/> that this drop originated from.
+            </summary>
+        </member>
+        <member name="P:Molten.Core.Wpf.DragDrop.DropEventArgs.Package">
+            <summary>
+            Gets or sets the package contents of this drop.
+            </summary>
+        </member>
+        <member name="T:Molten.Core.Wpf.BindableBase">
+            <summary>
+            Implementation of <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> to simplify models.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Wpf.BindableBase.SetProperty``1(``0@,``0,System.String)">
+            <summary>
+            Checks if a property already matches a desired value.  Sets the property and notifies listeners only when necessary.
+            </summary>
+            <typeparam name="T">Type of the property.</typeparam>
+            <param name="storage">Reference to a property with both getter and setter.</param>
+            <param name="value">Desired value for the property.</param>
+            <param name="propertyName">
+            Name of the property used to notify listeners. This value is optional and can be provided automatically when invoked from compilers that
+            support CallerMemberName.
+            </param>
+            <returns>True if the value was changed, false if the existing value matched the desired value.</returns>
+        </member>
+        <member name="M:Molten.Core.Wpf.BindableBase.OnPropertyChanged(System.String)">
+            <summary>
+            Notifies listeners that a property value has changed.
+            </summary>
+            <param name="propertyName">Name of the property used to notify listeners. This value is optional and can be provided automatically when
+            invoked from compilers that support <see cref="T:System.Runtime.CompilerServices.CallerMemberNameAttribute"/>.</param>
+        </member>
+        <member name="E:Molten.Core.Wpf.BindableBase.PropertyChanged">
+            <summary>
+            Multicast event for property change notifications.
+            </summary>
+        </member>
+        <member name="T:Molten.Core.Wpf.Commands.AsyncCommand">
+            <summary>
+            Implements the ICommand interface asynchronously. While the operation is executing, the Command's CanExecute method returns false.
+            </summary>
+        </member>
+        <member name="F:Molten.Core.Wpf.Commands.AsyncCommand.execute">
+            <summary>
+            Stores the execution action.
+            </summary>
+        </member>
+        <member name="F:Molten.Core.Wpf.Commands.AsyncCommand.canExecute">
+            <summary>
+            Stores the CanExecute function.
+            </summary>
+        </member>
+        <member name="F:Molten.Core.Wpf.Commands.AsyncCommand.isExecuting">
+            <summary>
+            Stores if the async action is being executed.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Wpf.Commands.AsyncCommand.#ctor(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Initializes a new instance of the AsyncCommand class with the specified asynchronous operation as the command target.
+            </summary>
+            <param name="execute">The async method to execute as the command target.</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.Commands.AsyncCommand.#ctor(System.Func{System.Threading.Tasks.Task},System.Func{System.Boolean})">
+            <summary>
+            Initializes a new instance of the AsyncCommand class with the specified asynchronous operation as the command target
+            and specified method to determine if the command is able to be executed.
+            </summary>
+            <param name="execute">The async method to execute as the command target.</param>
+            <param name="canExecute">The method to use to check if this command may be executed. This should not include a check for if this command is currently executing, which is handled internally.</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.Commands.AsyncCommand.CanExecute(System.Object)">
+            <summary>
+            Returns whether or not this command is currently able to be executed.
+            </summary>
+            <param name="parameter">The parameter to pass in. [Not used.]</param>
+            <returns>True if the command can currently be executed or is already being executed asynchronously, false otherwise.</returns>
+        </member>
+        <member name="M:Molten.Core.Wpf.Commands.AsyncCommand.Execute(System.Object)">
+            <summary>
+            Executes the async method stored within this AsyncCommand object.
+            </summary>
+            <param name="parameter">The parameter to pass to the execution method. [Not used.]</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.Commands.AsyncCommand.OnCanExecuteChanged">
+            <summary>
+            Invokes the CanExecuteChanged event.
+            </summary>
+        </member>
+        <member name="E:Molten.Core.Wpf.Commands.AsyncCommand.CanExecuteChanged">
+            <summary>
+            Occurs when the CanExecute state has changed.
+            </summary>
+        </member>
+        <member name="T:Molten.Core.Wpf.Commands.ActionCommand">
+            <summary>
+            Implements the ICommand interface using an <see cref="T:System.Action"/> delegate.
+            </summary>
+        </member>
+        <member name="F:Molten.Core.Wpf.Commands.ActionCommand.execute">
+            <summary>
+            Stores the action to be executed.
+            </summary>
+        </member>
+        <member name="F:Molten.Core.Wpf.Commands.ActionCommand.canExecute">
+            <summary>
+            Stores the method to check if we can execute the action.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Wpf.Commands.ActionCommand.#ctor(System.Action)">
+            <summary>
+            Initializes a new instance of the ActionCommand class with the specified action to execute.
+            </summary>
+            <param name="executeAction">The action to perform when the command is executed.</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.Commands.ActionCommand.#ctor(System.Action,System.Func{System.Boolean})">
+            <summary>
+            Initializes a new instance of the ActionCommand class with the specified action to execute, 
+            and the specified method to use to check if the command can be executed.
+            </summary>
+            <param name="executeAction">The action to perform when the command is executed.</param>
+            <param name="canExecuteMethod">The method to use to check if this command can be executed.</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.Commands.ActionCommand.CanExecute(System.Object)">
+            <summary>
+            Returns whether or not this command can be executed.
+            </summary>
+            <param name="parameter">The parameter to pass to the method. [Not used.]</param>
+            <returns>True if the command can be executed currently, false otherwise.</returns>
+        </member>
+        <member name="M:Molten.Core.Wpf.Commands.ActionCommand.Execute(System.Object)">
+            <summary>
+            Executes the action contained within this ActionCommand object.
+            </summary>
+            <param name="parameter">The parameter to pass to the action. [Not used.]</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.Commands.ActionCommand.OnCanExecuteChanged">
+            <summary>
+            Invalidates the execution state and forces the CanExecute function to re-evaluate.
+            </summary>
+        </member>
+        <member name="E:Molten.Core.Wpf.Commands.ActionCommand.CanExecuteChanged">
+            <summary>
+            Occurs when the CanExecute state has changed.
+            </summary>
+        </member>
+        <member name="T:Molten.Core.Wpf.Converters.VisibilityConverter">
+            <summary>
+            A type converter for visibility and boolean values.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Wpf.Converters.VisibilityConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a boolean value to a Visibility value.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <param name="targetType">The target type.</param>
+            <param name="parameter">The parameter, or null if no parameter was defined.</param>
+            <param name="culture">Culture info.</param>
+            <returns>The converted value.</returns>
+        </member>
+        <member name="M:Molten.Core.Wpf.Converters.VisibilityConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a Visibility value to a boolean value.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <param name="targetType">The target type.</param>
+            <param name="parameter">The parameter, or null if no parameter was defined.</param>
+            <param name="culture">Culture info.</param>
+            <returns>The converted value.</returns>
+        </member>
+        <member name="T:Molten.Core.Wpf.Converters.InverseVisibilityConverter">
+            <summary>
+            An inverse type converter for visibility and boolean values.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Wpf.Converters.InverseVisibilityConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a Visibility value to a boolean value.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <param name="targetType">The target type.</param>
+            <param name="parameter">The parameter, or null if no parameter was defined.</param>
+            <param name="culture">Culture info.</param>
+            <returns>The converted value.</returns>
+        </member>
+        <member name="M:Molten.Core.Wpf.Converters.InverseVisibilityConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a boolean value to a Visibility value.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <param name="targetType">The target type.</param>
+            <param name="parameter">The parameter, or null if no parameter was defined.</param>
+            <param name="culture">Culture info.</param>
+            <returns>The converted value.</returns>
+        </member>
+        <member name="T:Molten.Core.Wpf.DialogCloser">
+            <summary>
+            Contains a dependency property that can be attached to a button. The DialogResult property is bindable, and when its value is set, the window closes.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Wpf.DialogCloser.GetDialogResult(System.Windows.DependencyObject)">
+            <summary>
+            Retrieves the DialogResult property value.
+            </summary>
+            <param name="obj">The dependency object containing the property.</param>
+            <returns>The value of the property.</returns>
+        </member>
+        <member name="M:Molten.Core.Wpf.DialogCloser.SetDialogResult(System.Windows.DependencyObject,System.Nullable{System.Boolean})">
+            <summary>
+            Sets the value of the DialogResult property.
+            </summary>
+            <param name="obj">The dependency object containing the property.</param>
+            <param name="value">The value to set.</param>
+        </member>
+        <member name="F:Molten.Core.Wpf.DialogCloser.DialogResultProperty">
+            <summary>
+            The DialogResult dependency property.
+            </summary>
+        </member>
+        <member name="T:Molten.Core.Wpf.ObservableRangeCollection`1">
+            <summary> 
+            Represents a dynamic data collection that provides notifications when items get added, removed, or when the whole list is refreshed. 
+            </summary> 
+            <typeparam name="T">The type to store inside this ObservableRangeCollection.</typeparam> 
+        </member>
+        <member name="M:Molten.Core.Wpf.ObservableRangeCollection`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary> 
+            Adds the elements of the specified collection to the end of the ObservableCollection(Of T). 
+            </summary> 
+        </member>
+        <member name="M:Molten.Core.Wpf.ObservableRangeCollection`1.Replace(`0)">
+            <summary> 
+            Clears the current collection and replaces it with the specified item. 
+            </summary> 
+        </member>
+        <member name="M:Molten.Core.Wpf.ObservableRangeCollection`1.ReplaceRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary> 
+            Clears the current collection and replaces it with the specified collection. 
+            </summary> 
+        </member>
+        <member name="M:Molten.Core.Wpf.ObservableRangeCollection`1.#ctor">
+            <summary> 
+            Initializes a new instance of the ObservableRangeCollection class. 
+            </summary> 
+        </member>
+        <member name="M:Molten.Core.Wpf.ObservableRangeCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary> 
+            Initializes a new instance of the ObservableRangeCollection class that contains elements copied from the specified collection. 
+            </summary> 
+            <param name="collection">collection: The collection from which the elements are copied.</param> 
+            <exception cref="T:System.ArgumentNullException">The collection parameter cannot be null.</exception> 
+        </member>
+        <member name="T:Molten.Core.Wpf.PropertyPathHelper">
+            <summary>
+            Contains methods that assist in getting and setting dependency property values on dependency objects based on a property/binding path
+            by using a dummy dependency object to store and retrieve values.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Wpf.PropertyPathHelper.GetValue(System.Object,System.String)">
+            <summary>
+            Retrieves the value of the dependency property resolved from the <paramref name="propertyPath" /> on the object <paramref name="obj" />.
+            </summary>
+            <param name="obj">The object to search in.</param>
+            <param name="propertyPath">The path of the property to retrieve the value for. Supports any syntax that {Binding Path=...} does.</param>
+            <returns>The value of the dependency property.</returns>
+        </member>
+        <member name="M:Molten.Core.Wpf.PropertyPathHelper.SetValue(System.Object,System.String,System.Object)">
+            <summary>
+            Sets the value of the dependency property resolved from <paramref name="propertyPath" /> within <paramref name="obj" /> to <paramref name="value" />.
+            </summary>
+            <param name="obj">The object to search in.</param>
+            <param name="propertyPath">The path of the property to retrieve the value for. Supports any syntax that {Binding Path=...} does.</param>
+            <param name="value">The value to set the dependency property to.</param>
+        </member>
+        <member name="T:Molten.Core.Wpf.VisualTreeUtilities">
+            <summary>
+            Contains helper methods to assist in navigating through the WPF visual tree.
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Wpf.VisualTreeUtilities.FindVisualChildren``1(System.Windows.DependencyObject)">
+            <summary>
+            Traverses the visual tree and attempts to locate children of type <typeparamref name="T" />.
+            </summary>
+            <typeparam name="T">The type of child to search for.</typeparam>
+            <param name="parent">The root element to begin searching at.</param>
+            <returns>A list of type <typeparamref name="T" /> containing any children of that type.</returns>
+        </member>
+        <member name="T:Molten.Core.Wpf.WatermarkAdorner">
+            <summary>
+            Adorner for the watermark
+            </summary>
+        </member>
+        <member name="F:Molten.Core.Wpf.WatermarkAdorner.contentPresenter">
+            <summary>
+            <see cref="T:System.Windows.Controls.ContentPresenter"/> that holds the watermark
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Wpf.WatermarkAdorner.#ctor(System.Windows.UIElement,System.Object)">
+            <summary>
+            Initializes a new instance of the WatermarkAdorner class.
+            </summary>
+            <param name="adornedElement">The <see cref="T:System.Windows.UIElement"/> to be adorned.</param>
+            <param name="watermark">The watermark to add.</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.WatermarkAdorner.GetVisualChild(System.Int32)">
+            <summary>
+            Returns a specified child <see cref="T:System.Windows.Media.Visual"/> for the parent <see cref="T:System.Windows.Media.ContainerVisual"/>.
+            </summary>
+            <param name="index">A 32-bit signed integer that represents the index value of the child <see cref="T:System.Windows.Media.Visual"/>. The value of index must be between 0 and <see cref="P:Molten.Core.Wpf.WatermarkAdorner.VisualChildrenCount"/> - 1.</param>
+            <returns>The child <see cref="T:System.Windows.Media.Visual"/>.</returns>
+        </member>
+        <member name="M:Molten.Core.Wpf.WatermarkAdorner.MeasureOverride(System.Windows.Size)">
+            <summary>
+            Implements any custom measuring behavior for the adorner.
+            </summary>
+            <param name="constraint">A size to constrain the adorner to.</param>
+            <returns>A <see cref="T:System.Windows.Size"/> object representing the amount of layout space needed by the adorner.</returns>
+        </member>
+        <member name="M:Molten.Core.Wpf.WatermarkAdorner.ArrangeOverride(System.Windows.Size)">
+            <summary>
+            When overridden in a derived class, positions child elements and determines a size for a <see cref="T:System.Windows.FrameworkElement"/> derived class. 
+            </summary>
+            <param name="finalSize">The final area within the parent that this element should use to arrange itself and its children.</param>
+            <returns>The actual size used.</returns>
+        </member>
+        <member name="P:Molten.Core.Wpf.WatermarkAdorner.VisualChildrenCount">
+            <summary>
+            Gets the number of children for the <see cref="T:System.Windows.Media.ContainerVisual"/>.
+            </summary>
+        </member>
+        <member name="P:Molten.Core.Wpf.WatermarkAdorner.Control">
+            <summary>
+            Gets the control that is being adorned
+            </summary>
+        </member>
+        <member name="T:Molten.Core.Wpf.WatermarkService">
+            <summary>
+            Class that provides the Watermark attached property
+            </summary>
+        </member>
+        <member name="F:Molten.Core.Wpf.WatermarkService.WatermarkProperty">
+            <summary>
+            Watermark Attached Dependency Property
+            </summary>
+        </member>
+        <member name="F:Molten.Core.Wpf.WatermarkService.itemsControls">
+            <summary>
+            Dictionary of ItemsControls
+            </summary>
+        </member>
+        <member name="M:Molten.Core.Wpf.WatermarkService.GetWatermark(System.Windows.DependencyObject)">
+            <summary>
+            Gets the Watermark property.  This dependency property indicates the watermark for the control.
+            </summary>
+            <param name="d"><see cref="T:System.Windows.DependencyObject"/> to get the property from</param>
+            <returns>The value of the Watermark property</returns>
+        </member>
+        <member name="M:Molten.Core.Wpf.WatermarkService.SetWatermark(System.Windows.DependencyObject,System.Object)">
+            <summary>
+            Sets the Watermark property.  This dependency property indicates the watermark for the control.
+            </summary>
+            <param name="d">The <see cref="T:System.Windows.DependencyObject"/> to set the property on.</param>
+            <param name="value">The value of the watermark.</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.WatermarkService.OnWatermarkChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Handles changes to the Watermark property.
+            </summary>
+            <param name="d">The <see cref="T:System.Windows.DependencyObject"/> that fired the event.</param>
+            <param name="e">A <see cref="T:System.Windows.DependencyPropertyChangedEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.WatermarkService.Control_GotKeyboardFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handle the GotFocus event on the control
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">A <see cref="T:System.Windows.RoutedEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.WatermarkService.Control_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handle the Loaded and LostFocus event on the control
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">A <see cref="T:System.Windows.RoutedEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.WatermarkService.ItemsSourceChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the items source changed event
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">A <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.WatermarkService.ItemsChanged(System.Object,System.Windows.Controls.Primitives.ItemsChangedEventArgs)">
+            <summary>
+            Event handler for the items changed event
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">A <see cref="T:System.Windows.Controls.Primitives.ItemsChangedEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.WatermarkService.RemoveWatermark(System.Windows.UIElement)">
+            <summary>
+            Remove the watermark from the specified element
+            </summary>
+            <param name="control">Element to remove the watermark from</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.WatermarkService.ShowWatermark(System.Windows.Controls.Control)">
+            <summary>
+            Show the watermark on the specified control
+            </summary>
+            <param name="control">Control to show the watermark on</param>
+        </member>
+        <member name="M:Molten.Core.Wpf.WatermarkService.ShouldShowWatermark(System.Windows.Controls.Control)">
+            <summary>
+            Indicates whether or not the watermark should be shown on the specified control
+            </summary>
+            <param name="c"><see cref="T:System.Windows.Controls.Control"/> to test</param>
+            <returns>true if the watermark should be shown; false otherwise</returns>
+        </member>
+    </members>
+</doc>
