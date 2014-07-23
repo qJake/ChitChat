@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 using System.Windows;
 using ChitChat.Client.View.Configuration;
 using ChitChat.Client.View.Hubs;
@@ -17,16 +12,15 @@ namespace ChitChat.Client.View
     {
         public static AppSettings Settings { get; private set; }
 
+        public static NotificationArea NotificationIcon { get; private set; }
+
         public App()
         {
             Settings = (AppSettings)ConfigurationManager.GetSection("settings");
 
+            NotificationIcon = new NotificationArea();
+
             HubManager.Initialize(Settings.ConnectionUrl);
-
-            Startup += (_, __) =>
-            {
-
-            };
         }
     }
 }

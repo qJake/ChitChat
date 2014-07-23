@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ChitChat.Client.View.Hubs;
+using ChitChat.Client.ViewModel;
 using Microsoft.AspNet.SignalR.Client;
 
 namespace ChitChat.Client.View
@@ -22,12 +23,16 @@ namespace ChitChat.Client.View
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Connect : Window
     {
+        public ConnectViewModel ViewModel { get; set; }
+
         private IHubProxy PostHub;
 
-        public MainWindow()
+        public Connect()
         {
+            ViewModel = new ConnectViewModel();
+
             InitializeComponent();
 
             HubManager.Connecting += () =>
