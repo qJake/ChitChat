@@ -18,6 +18,7 @@ namespace ChitChat.Server.Model
         {
             this.Comments = new HashSet<Comment>();
             this.PostSecurities = new HashSet<PostSecurity>();
+            this.Likes = new HashSet<Like>();
         }
     
         public int ID { get; set; }
@@ -30,5 +31,6 @@ namespace ChitChat.Server.Model
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual User User { get; set; }
         public virtual ICollection<PostSecurity> PostSecurities { get; set; }
+        public virtual ICollection<Like> Likes { get; set; }
     }
 }

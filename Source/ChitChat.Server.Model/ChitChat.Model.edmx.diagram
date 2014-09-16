@@ -5,16 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="147b806df7194ae88bb9351ea76239ff" Name="Diagram1">
-        <EntityTypeShape EntityType="ChitChat.Server.Model.Database.Category" Width="1.5" PointX="2.375" PointY="2.875" />
-        <EntityTypeShape EntityType="ChitChat.Server.Model.Database.Comment" Width="1.5" PointX="7.625" PointY="4.5" />
+        <EntityTypeShape EntityType="ChitChat.Server.Model.Database.Category" Width="1.5" PointX="2.375" PointY="2.5" />
+        <EntityTypeShape EntityType="ChitChat.Server.Model.Database.Comment" Width="1.5" PointX="7.875" PointY="4.5" />
         <EntityTypeShape EntityType="ChitChat.Server.Model.Database.Post" Width="1.5" PointX="5.25" PointY="3.125" />
-        <EntityTypeShape EntityType="ChitChat.Server.Model.Database.PostSecurity" Width="1.5" PointX="2.375" PointY="4.875" />
-        <EntityTypeShape EntityType="ChitChat.Server.Model.Database.User" Width="1.5" PointX="7.875" PointY="0.5" />
+        <EntityTypeShape EntityType="ChitChat.Server.Model.Database.PostSecurity" Width="1.5" PointX="2.375" PointY="5.25" />
+        <EntityTypeShape EntityType="ChitChat.Server.Model.Database.User" Width="1.5" PointX="7.875" PointY="1.75" />
         <AssociationConnector Association="ChitChat.Server.Model.Database.FK_Posts_Category" />
         <AssociationConnector Association="ChitChat.Server.Model.Database.FK_Comment_Post" />
         <AssociationConnector Association="ChitChat.Server.Model.Database.FK_Comment_User" />
         <AssociationConnector Association="ChitChat.Server.Model.Database.FK_Posts_User" />
         <AssociationConnector Association="ChitChat.Server.Model.Database.FK_PostSecurity_Posts" />
+        <EntityTypeShape EntityType="ChitChat.Server.Model.Database.Like" Width="1.5" PointX="5.375" PointY="0.5" />
+        <AssociationConnector Association="ChitChat.Server.Model.Database.FK_Like_Post" />
+        <AssociationConnector Association="ChitChat.Server.Model.Database.FK_Like_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

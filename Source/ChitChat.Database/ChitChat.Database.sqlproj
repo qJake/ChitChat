@@ -69,6 +69,7 @@
     <Build Include="Tables\PostSecurity.sql" />
     <Build Include="Tables\User.sql" />
     <PostDeploy Include="Population\MockData.sql" />
+    <Build Include="Tables\Like.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ChitChat.Database.refactorlog" />

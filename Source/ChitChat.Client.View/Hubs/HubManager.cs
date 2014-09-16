@@ -12,6 +12,7 @@ namespace ChitChat.Client.View.Hubs
     {
         public static event Action Connected;
         public static event Action Connecting;
+        public static event Action Disconnected;
 
         private static HubConnection Connection { get; set; }
         private static Dictionary<string, IHubProxy> Hubs { get; set; }
@@ -50,6 +51,12 @@ namespace ChitChat.Client.View.Hubs
                         if (Connecting != null)
                         {
                             Connecting();
+                        }
+                        break;
+                    case ConnectionState.Disconnected:
+                        if (Disconnected != null)
+                        {
+                            Disconnected();
                         }
                         break;
                 }

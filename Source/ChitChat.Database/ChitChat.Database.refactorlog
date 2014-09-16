@@ -84,4 +84,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[FK_Comment_Post]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="36c76980-769e-4ccd-a867-fb1a3926e8d0" ChangeDateTime="08/13/2014 13:16:36">
+    <Property Name="ElementName" Value="[dbo].[Like].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Like]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="298e414d-df13-4d28-a7e2-b8a549e95f4b" ChangeDateTime="08/13/2014 13:19:22">
+    <Property Name="ElementName" Value="[dbo].[Category].[Color]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Category]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Foreground" />
+  </Operation>
 </Operations>

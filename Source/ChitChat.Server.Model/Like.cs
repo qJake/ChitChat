@@ -12,12 +12,10 @@ namespace ChitChat.Server.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class Like
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string Foreground { get; set; }
-        public string Background { get; set; }
-        public int Timeout { get; set; }
+        public int UserID { get; set; }
+        public int PostID { get; set; }
     }
 }

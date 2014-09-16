@@ -69,6 +69,9 @@
     <Compile Include="Comment.cs">
       <DependentUpon>ChitChat.tt</DependentUpon>
     </Compile>
+    <Compile Include="Like.cs">
+      <DependentUpon>ChitChat.tt</DependentUpon>
+    </Compile>
     <Compile Include="Post.cs">
       <DependentUpon>ChitChat.tt</DependentUpon>
     </Compile>
@@ -90,7 +93,7 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.config" />
     <None Include="ChitChat.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ChitChat.Model.edmx</DependentUpon>

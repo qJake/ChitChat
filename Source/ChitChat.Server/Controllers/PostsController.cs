@@ -8,6 +8,11 @@ namespace ChitChat.Server.Controllers
 {
     public class PostsController : ApiController
     {
+        private static IHubContext HubContext
+        {
+            get { return GlobalHost.ConnectionManager.GetHubContext<PostHub>(); }
+        }
+
         [HttpGet]
         [Route("api/posts/all")]
         public IEnumerable<Post> All()
@@ -33,8 +38,14 @@ namespace ChitChat.Server.Controllers
         [Route("api/posts/create")]
         public void Post()
         {
-            var context = GlobalHost.ConnectionManager.GetHubContext<PostHub>();
-            context.Clients.All.NewPostNotification();
+            HubContext.Clients.All.NewPostNotification(Posts.GetPost(5));
+        }
+
+        [HttpPost]
+        public void Create([FromBody] Post post)
+        {
+            Posts.AddPost(post);
+            HubContext.Clients.All.NewPostNotification(post);
         }
     }
 }

@@ -17,6 +17,7 @@ namespace ChitChat.Server.Model
                                                .Include(p => p.Comments)
                                                .Include(p => p.User)
                                                .Include(p => p.Category)
+                                               .Include(p => p.Likes)
                         orderby p.Created descending
                         select p).Take(count).ToList();
             }
@@ -30,6 +31,7 @@ namespace ChitChat.Server.Model
                                                .Include(p => p.Comments)
                                                .Include(p => p.User)
                                                .Include(p => p.Category)
+                                               .Include(p => p.Likes)
                         select p).ToList();
             }
         }
@@ -38,7 +40,11 @@ namespace ChitChat.Server.Model
         {
             using (var context = new Entities())
             {
-                return (from p in context.Posts
+                return (from p in context.Posts.Include(p => p.PostSecurities)
+                                               .Include(p => p.Comments)
+                                               .Include(p => p.User)
+                                               .Include(p => p.Category)
+                                               .Include(p => p.Likes)
                         where p.ID == id
                         select p).FirstOrDefault();
             }
